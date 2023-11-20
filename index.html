@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your API Documentation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+            width: 100%;
+            z-index: 2;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        main {
+            margin: 20px;
+            flex: 1;
+        }
+
+        section {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+
+        h2 {
+            border-bottom: 2px solid #333;
+            color: #333;
+            padding-bottom: 10px;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        .response-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .response-item {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .response-item label {
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+
+        .remove-response {
+            color: #d9534f;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .remove-response:hover {
+            text-decoration: underline;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            background-color: #333;
+            color: #fff;
+            width: 400px;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            overflow-y: auto;
+        }
+
+        .endpoint-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .endpoint-item {
+            margin-bottom: 10px;
+        }
+
+        .endpoint-item a {
+            display: block;
+            padding: 10px;
+            background-color: #555;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .endpoint-item a:hover {
+            background-color: #777;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Your API Documentation</h1>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2>Endpoints</h2>
+        <ul id="sidebar-endpoint-list" class="endpoint-list">
+            <!-- Endpoints will be dynamically added here -->
+        </ul>
+    </aside>
+
+    <main>
+        <!-- Form to add a new endpoint -->
+        <section id="add-endpoint">
+            <h2>Add New Endpoint</h2>
+            <form id="endpoint-form">
+                <label for="path">Path:</label>
+                <input type="text" id="path" name="path" required>
+
+                <label for="method">Method:</label>
+                <select id="method" name="method" required>
+                    <option value="GET">GET</option>
+                    <option value="POST">POST</option>
+                    <option value="PUT">PUT</option>
+                    <option value="DELETE">DELETE</option>
+                    <option value="PATCH">PATCH</option>
+                </select>
+
+                <label for="summary">Summary:</label>
+                <input type="text" id="summary" name="summary" required>
+
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" required></textarea>
+
+                <h3>Responses</h3>
+                <ul id="response-list" class="response-list">
+                    <!-- Response inputs will be dynamically added here -->
+                </ul>
+
+                <button type="button" onclick="addNewResponse()">Add Response</button>
+                <button type="button" onclick="addNewEndpoint()">Add Endpoint</button>
+            </form>
+        </section>
+
+        <!-- Endpoints Section -->
+        <section id="endpoints">
+            <h2>Endpoint Details</h2>
+            <div id="endpoint-details">
+                <!-- Endpoint details will be dynamically added here -->
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Function to add a new endpoint
+            function addEndpoint(endpointData) {
+                // Create HTML elements for the endpoint in the sidebar
+                const sidebarEndpointItem = document.createElement('li');
+                sidebarEndpointItem.className = 'endpoint-item';
+                sidebarEndpointItem.innerHTML = `<a href="#">${endpointData.method} ${endpointData.path}</a>`;
+                sidebarEndpointItem.onclick = function () {
+                    displayEndpointDetails(endpointData);
+                };
+
+                // Append the endpoint to the sidebar
+                document.getElementById('sidebar-endpoint-list').appendChild(sidebarEndpointItem);
+
+                // Create HTML elements for the endpoint details
+                const endpointDetails = document.getElementById('endpoint-details');
+                endpointDetails.innerHTML = `
+                    <h3>${endpointData.method} ${endpointData.path}</h3>
+                    <p><strong>Summary:</strong> ${endpointData.summary}</p>
+                    <p><strong>Description:</strong> ${endpointData.description}</p>
+                    <h4>Responses:</h4>
+                    <ul class="response-list">
+                        ${endpointData.responses.map((response, index) => `
+                            <li class="response-item">
+                                <strong>${response.code}</strong>: ${response.description}
+                                <pre>${JSON.stringify(response.content, null, 2)}</pre>
+                            </li>
+                        `).join('')}
+                    </ul>
+                `;
+            }
+
+            // Function to add a new response to the form
+            window.addNewResponse = function () {
+                const responseList = document.getElementById('response-list');
+                const responseCount = responseList.childElementCount;
+
+                // Create HTML elements for the new response
+                const responseElement = document.createElement('li');
+                responseElement.className = 'response-item';
+                responseElement.innerHTML = `
+                    <label for="response-code-${responseCount}">Response Code:</label>
+                    <input type="text" id="response-code-${responseCount}" name="response-code-${responseCount}" required>
+
+                    <label for="response-desc-${responseCount}">Description:</label>
+                    <input type="text" id="response-desc-${responseCount}" name="response-desc-${responseCount}" required>
+
+                    <label for="response-content-${responseCount}">Content (JSON Schema):</label>
+                    <textarea id="response-content-${responseCount}" name="response-content-${responseCount}" rows="4" required></textarea>
+
+                    <span class="remove-response" onclick="removeResponse(${responseCount})">Remove</span>
+                `;
+
+                // Append the new response to the response list
+                responseList.appendChild(responseElement);
+            };
+
+            // Function to remove a response from the form
+            window.removeResponse = function (index) {
+                const responseList = document.getElementById('response-list');
+                const responseItem = document.getElementById(`response-content-${index}`);
+                responseList.removeChild(responseItem.parentElement);
+            };
+
+            // Function to add a new endpoint from the form
+            window.addNewEndpoint = function () {
+                // Get form data
+                const path = document.getElementById('path').value;
+                const method = document.getElementById('method').value;
+                const summary = document.getElementById('summary').value;
+                const description = document.getElementById('description').value;
+
+                // Get responses data
+                const responses = [];
+                const responseList = document.getElementById('response-list');
+                const responseItems = responseList.getElementsByClassName('response-item');
+
+                for (const responseItem of responseItems) {
+                    const code = responseItem.querySelector(`[id^="response-code"]`).value;
+                    const desc = responseItem.querySelector(`[id^="response-desc"]`).value;
+                    const content = JSON.parse(responseItem.querySelector(`[id^="response-content"]`).value);
+
+                    responses.push({
+                        code,
+                        description: desc,
+                        content,
+                    });
+                }
+
+                // Example: Adding a new endpoint
+                const newEndpoint = {
+                    path,
+                    method,
+                    summary,
+                    description,
+                    responses,
+                };
+
+                // Add the new endpoint
+                addEndpoint(newEndpoint);
+
+                // Clear the form
+                document.getElementById('endpoint-form').reset();
+                responseList.innerHTML = ''; // Clear responses
+            };
+
+            // Function to display endpoint details in the main panel
+            function displayEndpointDetails(endpointData) {
+                const endpointDetails = document.getElementById('endpoint-details');
+                endpointDetails.innerHTML = `
+                    <h3>${endpointData.method} ${endpointData.path}</h3>
+                    <p><strong>Summary:</strong> ${endpointData.summary}</p>
+                    <p><strong>Description:</strong> ${endpointData.description}</p>
+                    <h4>Responses:</h4>
+                    <ul class="response-list">
+                        ${endpointData.responses.map((response, index) => `
+                            <li class="response-item">
+                                <strong>${response.code}</strong>: ${response.description}
+                                <pre>${JSON.stringify(response.content, null, 2)}</pre>
+                            </li>
+                        `).join('')}
+                    </ul>
+                `;
+            }
+
+            // Example: Adding a sample endpoint
+            const exampleEndpoint = {
+                path: '/example',
+                method: 'GET',
+                summary: 'Get example data',
+                description: 'Retrieve data for the example endpoint',
+                responses: [
+                    {
+                        code: '200',
+                        description: 'Successful response',
+                        content: {
+                            'application/json': {
+                                // JSON Schema for the response
+                            }
+                        }
+                    },
+                    // Add more responses as needed
+                ]
+            };
+
+            // Initialize with the sample endpoint
+            addEndpoint(exampleEndpoint);
+            displayEndpointDetails(exampleEndpoint);
+        });
+    </script>
+</body>
+</html>

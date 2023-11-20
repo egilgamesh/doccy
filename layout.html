@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+        }
+
+        .left-panel, .middle-panel, .right-panel {
+            box-sizing: border-box;
+            padding: 20px;
+        }
+
+        .left-panel {
+            flex: 0 0 300px; /* Make the left panel 300px wide and fixed */
+            background-color: #f0f0f0;
+        }
+
+        .middle-panel, .right-panel {
+            flex: 1;
+            height: 100vh;
+        }
+
+        .middle-panel {
+            background-color: #e0e0e0;
+        }
+
+        .right-panel {
+            background-color: #d0d0d0;
+        }
+    </style>
+    <title>Three-Panel Layout</title>
+</head>
+<body>
+    <div class="left-panel">
+        <h2>Left Panel</h2>
+        <!-- Add content for the left panel here -->
+    </div>
+
+    <div class="middle-panel">
+        <h2>Middle Panel</h2>
+        <!-- Add content for the middle panel here -->
+    </div>
+
+    <div class="right-panel">
+        <h2>Right Panel</h2>
+        <!-- Add content for the right panel here -->
+    </div>
+</body>
+</html>
