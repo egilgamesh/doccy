@@ -13,6 +13,31 @@
             display: flex;
         }
 
+        .left-panel, .middle-panel, .right-panel {
+            box-sizing: border-box;
+            padding: 20px;
+            height: 100vw;
+            overflow-y: scroll;
+        }
+
+        .left-panel {
+            flex: 0 0 300px; /* Make the left panel 300px wide and fixed */
+            background-color: #f0f0f0;
+        }
+
+        .middle-panel, .right-panel {
+            flex: 1;
+
+        }
+
+        .middle-panel {
+            background-color: #e0e0e0;
+        }
+
+        .right-panel {
+            background-color: #d0d0d0;
+        }
+
         header {
             background-color: #333;
             color: #fff;
@@ -146,21 +171,32 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>Your API Documentation</h1>
-    </header>
 
-    <!-- Sidebar -->
-    <aside class="sidebar">
+
+    <div class="left-panel">
         <h2>Endpoints</h2>
         <ul id="sidebar-endpoint-list" class="endpoint-list">
             <!-- Endpoints will be dynamically added here -->
         </ul>
-    </aside>
+    </div>
 
-    <main>
+    <div class="middle-panel">
+        <main>
+
+
+            <!-- Endpoints Section -->
+            <div id="endpoints">
+                <h2>Endpoint Details</h2>
+                <div id="endpoint-details">
+                    <!-- Endpoint details will be dynamically added here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="right-panel">
         <!-- Form to add a new endpoint -->
-        <section id="add-endpoint">
+        <div id="add-endpoint">
             <h2>Add New Endpoint</h2>
             <form id="endpoint-form">
                 <label for="path">Path:</label>
@@ -189,16 +225,9 @@
                 <button type="button" onclick="addNewResponse()">Add Response</button>
                 <button type="button" onclick="addNewEndpoint()">Add Endpoint</button>
             </form>
-        </section>
+        </div>
+    </div>
 
-        <!-- Endpoints Section -->
-        <section id="endpoints">
-            <h2>Endpoint Details</h2>
-            <div id="endpoint-details">
-                <!-- Endpoint details will be dynamically added here -->
-            </div>
-        </section>
-    </main>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
