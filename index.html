@@ -16,7 +16,7 @@
         .left-panel, .middle-panel, .right-panel {
             box-sizing: border-box;
             padding: 20px;
-            height: 100vh;
+            height: 98vh;
             overflow-y: scroll;
         }
 
@@ -165,10 +165,46 @@
         .endpoint-item a:hover {
             background-color: #777;
         }
+
+        #menu-bar {
+            background-color: rgb(5, 127, 192);
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            z-index: 2;
+            position: absolute;
+            width: 95%;
+            top: 0;
+        }
+
+        #menu-bar a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+            font-size: 16px;
+        }
+
+        #menu-bar a:hover {
+            text-decoration: underline;
+        }
+
     </style>
 </head>
 <body>
+    <div id="menu-bar">
+        <!-- File Menu -->
+        <div>
+            <a href="#" onclick="newFile()">New</a>
+            <a href="#" onclick="openFile()">Open</a>
+            <a href="#" onclick="saveFile()">Save</a>
+            <a href="#" onclick="exportFile()">Export</a>
+        </div>
 
+        <!-- Help Menu -->
+        <div>
+            <a href="#" onclick="showHelp()">Help</a>
+        </div>
+    </div>
     <div class="left-panel sidebar">
         <h2>Endpoints</h2>
         <ul id="sidebar-endpoint-list" class="endpoint-list">
@@ -423,6 +459,35 @@
             addEndpoint(exampleEndpoint);
             displayEndpointDetails(exampleEndpoint);
         });
+
+
+        // Your existing JavaScript code here
+
+        // Example functions for menu actions
+        function newFile() {
+            // Add logic for creating a new file
+            console.log("New File");
+        }
+
+        function openFile() {
+            // Add logic for opening a file
+            console.log("Open File");
+        }
+
+        function saveFile() {
+            // Add logic for saving a file
+            console.log("Save File");
+        }
+
+        function exportFile() {
+            // Add logic for exporting a file
+            console.log("Export File");
+        }
+
+        function showHelp() {
+            // Add logic for showing help
+            console.log("Show Help");
+        }
     </script>
 </body>
 </html>
