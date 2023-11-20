@@ -215,6 +215,7 @@
 
                 <button type="button" onclick="addNewResponse()">Add Response</button>
                 <button type="button" onclick="addNewEndpoint()">Add Endpoint</button>
+                <button type="button" onclick="downloadEndpoints()">Download JSON</button>
             </form>
         </section>
     </div>
@@ -344,6 +345,58 @@
                         `).join('')}
                     </ul>
                 `;
+            }
+
+            // Function to download endpoint details as JSON
+            window.downloadEndpoints = function () {
+                const endpointData = getEndpointsData(); // Retrieve endpoint data
+                const jsonString = JSON.stringify(endpointData, null, 2);
+
+                const blob = new Blob([jsonString], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'endpoints.json';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+
+                URL.revokeObjectURL(url);
+            };
+
+            // Function to get endpoint data from the DOM
+            function getEndpointsData() {
+                const sidebarEndpointList = document.getElementById('sidebar-endpoint-list');
+                const endpointItems = sidebarEndpointList.getElementsByClassName('endpoint-item');
+
+                const endpoints = [];
+
+                for (const endpointItem of endpointItems) {
+                    const endpointLink = endpointItem.querySelector('a');
+                    const path = endpointLink.textContent.trim().split(' ').slice(1).join(' ');
+                    const method = endpointLink.textContent.trim().split(' ')[0];
+                    const endpointDetails = getEndpointDetails(path, method);
+
+                    endpoints.push(endpointDetails);
+                }
+
+                return endpoints;
+            }
+
+            // Function to get details of a specific endpoint
+            function getEndpointDetails(path, method) {
+                const endpointDetails = {
+                    path,
+                    method,
+                    summary: '',
+                    description: '',
+                    responses: []
+                };
+
+                // ... (your existing code to fetch and populate endpointDetails) ...
+
+                return endpointDetails;
             }
 
             // Example: Adding a sample endpoint
