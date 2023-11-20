@@ -16,18 +16,20 @@
         .left-panel, .middle-panel, .right-panel {
             box-sizing: border-box;
             padding: 20px;
-            height: 100vw;
+            height: 100vh;
             overflow-y: scroll;
         }
 
         .left-panel {
-            flex: 0 0 300px; /* Make the left panel 300px wide and fixed */
-            background-color: #f0f0f0;
+            flex: 0 0 400px;
+            background-color: #333;
+            color: #fff;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            z-index: 1;
         }
 
         .middle-panel, .right-panel {
             flex: 1;
-
         }
 
         .middle-panel {
@@ -49,11 +51,6 @@
 
         h1 {
             margin: 0;
-        }
-
-        main {
-            margin: 20px;
-            flex: 1;
         }
 
         section {
@@ -172,8 +169,7 @@
 </head>
 <body>
 
-
-    <div class="left-panel">
+    <div class="left-panel sidebar">
         <h2>Endpoints</h2>
         <ul id="sidebar-endpoint-list" class="endpoint-list">
             <!-- Endpoints will be dynamically added here -->
@@ -181,22 +177,17 @@
     </div>
 
     <div class="middle-panel">
-        <main>
-
-
-            <!-- Endpoints Section -->
-            <div id="endpoints">
-                <h2>Endpoint Details</h2>
-                <div id="endpoint-details">
-                    <!-- Endpoint details will be dynamically added here -->
-                </div>
+        <section id="endpoints">
+            <h2>Endpoint Details</h2>
+            <div id="endpoint-details">
+                <!-- Endpoint details will be dynamically added here -->
             </div>
-        </main>
+        </section>
     </div>
 
     <div class="right-panel">
         <!-- Form to add a new endpoint -->
-        <div id="add-endpoint">
+        <section id="add-endpoint">
             <h2>Add New Endpoint</h2>
             <form id="endpoint-form">
                 <label for="path">Path:</label>
@@ -225,7 +216,7 @@
                 <button type="button" onclick="addNewResponse()">Add Response</button>
                 <button type="button" onclick="addNewEndpoint()">Add Endpoint</button>
             </form>
-        </div>
+        </section>
     </div>
 
 
