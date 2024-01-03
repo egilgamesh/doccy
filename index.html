@@ -1,77 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doccy API Documentation</title>
     <script src="doccy.js">
     </script>
- <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div id="menu-bar">
-        <!-- File Menu -->
-        <div>
-            <a href="#" onclick="newFile()">New</a>
-            <a href="#" onclick="openFile()">Open</a>
-            <a href="#" onclick="saveFile()">Save</a>
-            <a href="#" onclick="exportFile()">Export</a>
-        </div>
-
-        <!-- Help Menu -->
-        <div>
-            <a href="#" onclick="showHelp()">Help</a>
-        </div>
-    </div>
-    <div class="left-panel sidebar">
-        <h2>Endpoints</h2>
-        <ul id="sidebar-endpoint-list" class="endpoint-list">
-            <!-- Endpoints will be dynamically added here -->
-        </ul>
-    </div>
-
-    <div class="middle-panel">
-        <section id="endpoints">
-            <h2>Endpoint Details</h2>
-            <div id="endpoint-details">
-                <!-- Endpoint details will be dynamically added here -->
+    <div class="content">
+        <div class="menu-bar">
+            <!-- File Menu -->
+            <div>
+                <a href="#" onclick="newFile()">New</a>
+                <a href="#" onclick="openFile()">Open</a>
+                <a href="#" onclick="saveFile()">Save</a>
+                <a href="#" onclick="exportFile()">Export</a>
             </div>
-        </section>
-    </div>
 
-    <div class="right-panel">
-        <!-- Form to add a new endpoint -->
-        <section id="add-endpoint">
-            <h2>Add New Endpoint</h2>
-            <form id="endpoint-form">
-                <label for="path">Path:</label>
-                <input type="text" id="path" name="path" required>
-
-                <label for="method">Method:</label>
-                <select id="method" name="method" required>
-                    <option value="GET">GET</option>
-                    <option value="POST">POST</option>
-                    <option value="PUT">PUT</option>
-                    <option value="DELETE">DELETE</option>
-                    <option value="PATCH">PATCH</option>
-                </select>
-
-                <label for="summary">Summary:</label>
-                <input type="text" id="summary" name="summary" required>
-
-                <label for="description">Description:</label>
-                <textarea id="description" name="description" required></textarea>
-
-                <h3>Responses</h3>
-                <ul id="response-list" class="response-list">
-                    <!-- Response inputs will be dynamically added here -->
+            <!-- Help Menu -->
+            <div>
+                <a href="#" onclick="showHelp()">Help</a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="left-panel sidebar">
+                <h2>Endpoints</h2>
+                <ul id="sidebar-endpoint-list" class="endpoint-list">
+                    <!-- Endpoints will be dynamically added here -->
                 </ul>
+            </div>
 
-                <button type="button" onclick="addNewResponse()">Add Response</button>
-                <button type="button" onclick="addNewEndpoint()">Add Endpoint</button>
-                <button type="button" onclick="downloadEndpoints()">Download JSON</button>
-            </form>
-        </section>
+            <div class="middle-panel">
+                <section id="endpoints">
+                    <h2>Endpoint Details</h2>
+                    <div id="endpoint-details">
+                        <!-- Endpoint details will be dynamically added here -->
+                    </div>
+                </section>
+            </div>
+
+            <div class="right-panel">
+                <!-- Form to add a new endpoint -->
+                <section id="add-endpoint">
+                    <h2>Add New Endpoint</h2>
+                    <form id="endpoint-form">
+                        <label for="path">Path:</label>
+                        <input type="text" id="path" name="path" required>
+
+                        <label for="method">Method:</label>
+                        <select id="method" name="method" required>
+                            <option value="GET">GET</option>
+                            <option value="POST">POST</option>
+                            <option value="PUT">PUT</option>
+                            <option value="DELETE">DELETE</option>
+                            <option value="PATCH">PATCH</option>
+                        </select>
+
+                        <label for="summary">Summary:</label>
+                        <input type="text" id="summary" name="summary" required>
+
+                        <label for="description">Description:</label>
+                        <textarea id="description" name="description" required></textarea>
+
+                        <h3>Responses</h3>
+                        <ul id="response-list" class="response-list">
+                            <!-- Response inputs will be dynamically added here -->
+                        </ul>
+
+                        <button type="button" onclick="addNewResponse()">Add Response</button>
+                        <button type="button" onclick="addNewEndpoint()">Add Endpoint</button>
+                        <button type="button" onclick="downloadEndpoints()">Download JSON</button>
+                    </form>
+                </section>
+            </div>
+        </div>
     </div>
 </body>
+
 </html>

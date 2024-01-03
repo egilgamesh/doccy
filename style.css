@@ -7,18 +7,32 @@ body {
 }
 
 
-#menu-bar {
-    background-color: rgb(5, 127, 192);
+.menu-bar {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(0, 195, 204, 1) 0%, rgba(117, 52, 230, 1) 100%);
+    color: #fff;
     display: flex;
     justify-content: space-between;
-    padding: 10px;
-    position: absolute;
-    width: 98%;
-    top: 0;
-    z-index: 2;
+    height: 3px;
+    padding: 14px 0px 25px 41px;
+    font-family: 'Times New Roman', Cambria, Cochin, Georgia, Times, serif;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
 }
 
-#menu-bar a {
+.content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    height: 100%;
+}
+
+.container {
+    display: flex;
+
+}
+.menu-bar a {
     color: #fff;
     text-decoration: none;
     margin-right: 20px;
@@ -32,7 +46,6 @@ body {
 .left-panel, .middle-panel, .right-panel {
     box-sizing: border-box;
     padding: 20px;
-    height: 98vh;
     overflow-y: scroll;
 }
 
@@ -42,6 +55,7 @@ body {
     color: #fff;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     z-index: 1;
+    width: 20vw;
 }
 
 .middle-panel, .right-panel {
@@ -54,6 +68,7 @@ body {
 
 .right-panel {
     background-color: #d0d0d0;
+
 }
 
 header {
