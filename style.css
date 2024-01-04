@@ -183,10 +183,14 @@ button:hover {
     margin-bottom: 10px;
 }
 
+.postEndpoint {
+    background-color: green;
+}
+
 .endpoint-item a {
     display: block;
     padding: 10px;
-    background-color: #555;
+    background-color: green;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;

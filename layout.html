@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,45 +12,74 @@
             display: flex;
         }
 
-        .left-panel, .middle-panel, .right-panel {
-            box-sizing: border-box;
-            padding: 20px;
+        .buttoncontainer {
+            width: 300px;
+            display: flex;
+            flex-direction: row;
+            margin: 3px;
         }
 
-        .left-panel {
-            flex: 0 0 300px; /* Make the left panel 300px wide and fixed */
-            background-color: #f0f0f0;
+        .endpontheader {
+            padding: 3px;
+            color: white;
+            min-width: 50px;
+            text-align: center;
         }
 
-        .middle-panel, .right-panel {
-            flex: 1;
-            height: 100vh;
+        .endpontheadertext {
+            background-color: #f3f6f4;
+            padding: 3px;
+            width: 800px;
+            text-decoration: none;
+            display: inline-block;
+
         }
 
-        .middle-panel {
-            background-color: #e0e0e0;
+        .post {
+            background-color: green;
         }
 
-        .right-panel {
-            background-color: #d0d0d0;
+        .get {
+            background-color: blue;
+        }
+
+
+        a {
+            text-decoration: none;
+            display: inline-block;
+            color: black;
         }
     </style>
     <title>Three-Panel Layout</title>
 </head>
+
 <body>
-    <div class="left-panel">
-        <h2>Left Panel</h2>
-        <!-- Add content for the left panel here -->
-    </div>
+    <ul>
+        <li> <a href="www.google.com">
+                <div class="buttoncontainer">
+                    <div class="endpontheader post">
+                        <p>POST</p>
+                    </div>
+                    <div class="endpontheadertext">
+                        <p>/Customers</p>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li> <a href="http://www.google.com">
+                <div class="buttoncontainer">
+                    <div class="endpontheader get">
+                        <p>GET</p>
+                    </div>
+                    <div class="endpontheadertext">
+                        <p>/Customers</p>
+                    </div>
+                </div>
+            </a>
+        </li>
+    </ul>
 
-    <div class="middle-panel">
-        <h2>Middle Panel</h2>
-        <!-- Add content for the middle panel here -->
-    </div>
 
-    <div class="right-panel">
-        <h2>Right Panel</h2>
-        <!-- Add content for the right panel here -->
-    </div>
 </body>
+
 </html>

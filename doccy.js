@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Create HTML elements for the endpoint in the sidebar
         const sidebarEndpointItem = document.createElement('li');
         sidebarEndpointItem.className = 'endpoint-item';
+        sidebarEndpointItem.classList.add("postEndpoint");
         sidebarEndpointItem.innerHTML = `<a href="#">${endpointData.method} ${endpointData.path}</a>`;
         sidebarEndpointItem.onclick = function () {
             displayEndpointDetails(endpointData);
