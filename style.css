@@ -201,3 +201,53 @@ button:hover {
     background-color: #777;
 }
 
+/* <!-- new style of endpoint item in list --!> */
+
+
+
+
+.buttoncontainer {
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    margin: 3px;
+}
+
+.endpontheader {
+    padding: 3px;
+    color: white;
+    min-width: 50px;
+    text-align: center;
+}
+
+.endpontheadertext {
+    background-color: #f3f6f4;
+    padding: 3px;
+    width: 800px;
+    text-decoration: none;
+    display: inline-block;
+color: #555;
+}
+
+
+.post {
+    background-color: rgb(91, 241, 141);
+}
+
+.get {
+    background-color: rgb(31, 166, 250);
+}
+
+.put {
+    background-color: rgb(249, 191, 18);
+}
+
+.delete {
+    background-color: rgb(255, 53, 53);
+}
+
+.linkstyle {
+    text-decoration: none;
+    display: inline-block;
+    color: black;
+}

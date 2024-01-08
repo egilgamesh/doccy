@@ -1,11 +1,52 @@
 document.addEventListener('DOMContentLoaded', function () {
+
     // Function to add a new endpoint
     function addEndpoint(endpointData) {
         // Create HTML elements for the endpoint in the sidebar
         const sidebarEndpointItem = document.createElement('li');
-        sidebarEndpointItem.className = 'endpoint-item';
-        sidebarEndpointItem.classList.add("postEndpoint");
-        sidebarEndpointItem.innerHTML = `<a href="#">${endpointData.method} ${endpointData.path}</a>`;
+        // Create the main container div
+        var buttonContainer = document.createElement("div");
+        buttonContainer.className = "buttoncontainer";
+
+        // Create the first child div with class "endpontheader post"
+        var endpontHeaderPost = document.createElement("div");
+        endpontHeaderPost.className = "endpontheader";
+        const GetMethodTypeHeaderColor= GetMethodTypeHeaderClass(endpointData.method);
+        endpontHeaderPost.classList.add(GetMethodTypeHeaderColor);
+        // Create a paragraph element with the text "POST"
+        var postParagraph = document.createElement("p");
+        postParagraph.textContent = endpointData.method;
+
+        // Append the paragraph to the "endpontheader post" div
+        endpontHeaderPost.appendChild(postParagraph);
+
+        // Append the "endpontheader post" div to the main container div
+        buttonContainer.appendChild(endpontHeaderPost);
+
+        // Create the second child div with class "endpontheadertext"
+        var endpontHeaderText = document.createElement("div");
+        endpontHeaderText.className = "endpontheadertext";
+
+        // Create a paragraph element with the text "/Customers"
+        var customersParagraph = document.createElement("p");
+        customersParagraph.textContent = endpointData.path;
+
+        // Append the paragraph to the "endpontheadertext" div
+        endpontHeaderText.appendChild(customersParagraph);
+
+        // Append the "endpontheadertext" div to the main container div
+        buttonContainer.appendChild(endpontHeaderText);
+        const link = document.createElement("a");
+        link.appendChild(buttonContainer);
+        link.href="#"
+        link.className ="linkstyle";
+        sidebarEndpointItem.appendChild(link);
+
+
+        // sidebarEndpointItem.className = 'endpoint-item';
+        // sidebarEndpointItem.classList.add("postEndpoint");
+        // sidebarEndpointItem.innerHTML = `<a href="#">${endpointData.method} ${endpointData.path}</a>`;
+
         sidebarEndpointItem.onclick = function () {
             displayEndpointDetails(endpointData);
         };
@@ -30,6 +71,8 @@ document.addEventListener('DOMContentLoaded', function () {
             </ul>
         `;
     }
+
+
 
     // Function to add a new response to the form
     window.addNewResponse = function () {
@@ -160,6 +203,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
         return endpoints;
     }
+
+    function GetMethodTypeHeaderClass(methodType)
+    {
+        if(methodType =='GET')
+        return 'get';
+        if(methodType =='POST')
+        return 'post';
+    }
+
 
     // Function to get details of a specific endpoint
     function getEndpointDetails(path, method) {
