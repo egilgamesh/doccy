@@ -1,4 +1,28 @@
-document.addEventListener('DOMContentLoaded', function () {
+ document.addEventListener('DOMContentLoaded', function () {
+    // Example: Adding a sample endpoint
+    const exampleEndpoint = {
+        path: '/example',
+        method: 'GET',
+        summary: 'Get example data',
+        description: 'Retrieve data for the example endpoint',
+        responses: [
+            {
+                code: '200',
+                description: 'Successful response',
+                content: {
+                    'application/json': {
+                        // JSON Schema for the response
+                    }
+                }
+            },
+            // Add more responses as needed
+        ]
+    };
+
+    // Initialize with the sample endpoint
+    addEndpoint(exampleEndpoint);
+    displayEndpointDetails(exampleEndpoint);
+ })
 
     // Function to add a new endpoint
     function addEndpoint(endpointData) {
@@ -231,31 +255,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         return endpointDetails;
     }
-
-    // Example: Adding a sample endpoint
-    const exampleEndpoint = {
-        path: '/example',
-        method: 'GET',
-        summary: 'Get example data',
-        description: 'Retrieve data for the example endpoint',
-        responses: [
-            {
-                code: '200',
-                description: 'Successful response',
-                content: {
-                    'application/json': {
-                        // JSON Schema for the response
-                    }
-                }
-            },
-            // Add more responses as needed
-        ]
-    };
-
-    // Initialize with the sample endpoint
-    addEndpoint(exampleEndpoint);
-    displayEndpointDetails(exampleEndpoint);
-});
 
 
 // Your existing JavaScript code here
