@@ -65,12 +65,6 @@
         link.href="#"
         link.className ="linkstyle";
         sidebarEndpointItem.appendChild(link);
-
-
-        // sidebarEndpointItem.className = 'endpoint-item';
-        // sidebarEndpointItem.classList.add("postEndpoint");
-        // sidebarEndpointItem.innerHTML = `<a href="#">${endpointData.method} ${endpointData.path}</a>`;
-
         sidebarEndpointItem.onclick = function () {
             displayEndpointDetails(endpointData);
         };
