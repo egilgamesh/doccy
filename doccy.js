@@ -210,6 +210,10 @@ document.addEventListener('DOMContentLoaded', function () {
         return 'get';
         if(methodType =='POST')
         return 'post';
+        if(methodType =='DELETE')
+        return 'delete';
+        if(methodType =='PUT')
+        return 'put';
     }
 
 

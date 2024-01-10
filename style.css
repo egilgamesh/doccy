@@ -9,7 +9,7 @@ body {
 
 .menu-bar {
     background: rgb(2, 0, 36);
-    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(0, 195, 204, 1) 0%, rgba(117, 52, 230, 1) 100%);
+    background: linear-gradient(90deg, rgb(155, 150, 250) 0%, rgb(60, 122, 255) 0%, rgb(46, 46, 46) 100%);
     color: #fff;
     display: flex;
     justify-content: space-between;
@@ -32,6 +32,7 @@ body {
     display: flex;
 
 }
+
 .menu-bar a {
     color: #fff;
     text-decoration: none;
@@ -43,7 +44,9 @@ body {
     text-decoration: underline;
 }
 
-.left-panel, .middle-panel, .right-panel {
+.left-panel,
+.middle-panel,
+.right-panel {
     box-sizing: border-box;
     padding: 20px;
     overflow-y: scroll;
@@ -58,7 +61,8 @@ body {
     width: 20vw;
 }
 
-.middle-panel, .right-panel {
+.middle-panel,
+.right-panel {
     flex: 1;
 }
 
@@ -168,15 +172,17 @@ button:hover {
     background-color: #333;
     color: #fff;
     width: 400px;
-    padding: 20px;
+    /* padding: 20px; */
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    z-index: 1;
+    /* z-index: 1; */
     overflow-y: auto;
+    justify-content: space-around;
 }
 
 .endpoint-list {
     list-style-type: none;
     padding: 0;
+
 }
 
 .endpoint-item {
@@ -204,17 +210,17 @@ button:hover {
 /* <!-- new style of endpoint item in list --!> */
 
 
-
-
 .buttoncontainer {
     width: 300px;
     display: flex;
     flex-direction: row;
-    margin: 3px;
+    margin: 10px;
+    font-size: small;
 }
 
 .endpontheader {
-    padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
     color: white;
     min-width: 50px;
     text-align: center;
@@ -222,11 +228,12 @@ button:hover {
 
 .endpontheadertext {
     background-color: #f3f6f4;
-    padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
     width: 800px;
     text-decoration: none;
     display: inline-block;
-color: #555;
+    color: #555;
 }
 
 
